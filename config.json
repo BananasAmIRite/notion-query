@@ -1,0 +1,81 @@
+{
+    "groups": [
+        {
+            "groupsDbId": "4232f9bcdbf24db2968e7dacb63b07ad",
+            "groupsUsersField": "Members"
+        },
+        {
+            "groupsDbId": "cfca673dfcb04da2be8096d913f5aaf2",
+            "groupsUsersField": "Members"
+        }
+    ],
+    "databases": [
+        {
+            "name": "427 Tasks",
+            "id": "193d42506a1d4809be0beab69b60917e",
+            "usersField": ["Assignee"],
+            "groupsField": "Subteam",
+            "groupsId": "4232f9bcdbf24db2968e7dacb63b07ad",
+            "keyMap": {
+                "Task name": "Name",
+                "Assignee": "Assignee"
+            }
+        },
+        {
+            "name": "321 Tasks",
+            "id": "077f7844f8234d0390b54267e0a136a2",
+            "usersField": ["Assignee"],
+            "groupsField": "Subteam",
+            "groupsId": "cfca673dfcb04da2be8096d913f5aaf2",
+            "keyMap": {
+                "Task name": "Name",
+                "Assignee": "Assignee"
+            }
+        },
+        {
+            "name": "Machining Queue",
+            "id": "e6c1f1746f3c483295aa56e9bb6c8d2b",
+            "usersField": ["Machinist"],
+            "keyMap": {
+                "Description": "Name",
+                "Machinist": "Assignee"
+            }
+        },
+        {
+            "name": "3D Printing Queue",
+            "id": "bb64711a3cd94bdfb866e3af1e478382",
+            "usersField": ["Printer"],
+            "keyMap": {
+                "Part Name": "Name",
+                "Printer": "Assignee"
+            }
+        },
+        {
+            "name": "Laser Cutter Queue",
+            "id": "18bce710ce1e437c9f77cb0a96af1ef4",
+            "usersField": ["Cutter"],
+            "keyMap": {
+                "Part Name": "Name",
+                "Cutter": "Assignee"
+            }
+        },
+        {
+            "name": "Offseason Projects",
+            "id": "260690d1943a4cadb74276d6a69b8963",
+            "usersField": ["Leaders", "Members"],
+            "keyMap": {
+                "Task name": "Name",
+                "Leaders": "Assignee"
+            }
+        }
+    ],
+    "filters": [
+        {
+            "type": "absolute",
+            "options": {
+                "field": "Status",
+                "allowedValues": ["Not started", "In progress"]
+            }
+        }
+    ]
+}

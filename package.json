@@ -1,0 +1,24 @@
+{
+    "name": "notion-task-query",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "npx ts-node src/index.ts",
+        "build": "npx tsc",
+        "start": "node dist/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@notionhq/client": "^2.2.13",
+        "node-cache": "^5.1.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.6.3"
+    }
+}
