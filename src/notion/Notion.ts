@@ -4,6 +4,9 @@ import { PageObjectResponse, UserObjectResponse } from '@notionhq/client/build/s
 import queryDatabase from './Database';
 import convertProperties, { StringifiedProperties } from './ConvertProperties';
 import NodeCache from 'node-cache';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const PageCache = new NodeCache({ stdTTL: 600 });
 
@@ -23,7 +26,7 @@ export interface Ping {
 }
 
 export const notion = new Client({
-    auth: 'secret_lX4mysstAmLtVNvau26wqFmntFlxuA7PQw2GlsMNDWj',
+    auth: process.env.NOTION_API_KEY,
 });
 
 export default async function getNotionTasks(
