@@ -1,12 +1,14 @@
 import { StringifiedProperties, propToString } from '../notion/ConvertProperties';
+import { FilterOptions } from './useFilter';
 
-export interface FilterAbsoluteOptions {
+export interface FilterAbsoluteOptions extends FilterOptions {
     field: string;
     allowedValues: string[];
 }
 
 const filterAbsolute = (options: FilterAbsoluteOptions) => (data: StringifiedProperties) => {
-    return options.allowedValues.includes(propToString(data[options.field]));
+    const ret = options.allowedValues.includes(propToString(data[options.field]));
+    return options.invert ? !ret : ret;
 };
 
 export default filterAbsolute;

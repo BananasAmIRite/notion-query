@@ -69,13 +69,84 @@
             }
         }
     ],
-    "filters": [
+    "presets": [
+        { "name": "DEBUG", "filters": [] },
         {
-            "type": "absolute",
-            "options": {
-                "field": "Status",
-                "allowedValues": ["Not started", "In progress"]
-            }
+            "name": "CURRENT",
+            "filters": [
+                {
+                    "type": "absolute",
+                    "options": {
+                        "field": "Status",
+                        "allowedValues": ["Not started", "In progress"]
+                    }
+                },
+                {
+                    "type": "date",
+                    "options": {
+                        "DateField": "Due",
+                        "Type": "BETWEEN"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "UPCOMING",
+            "filters": [
+                {
+                    "type": "absolute",
+                    "options": {
+                        "field": "Status",
+                        "allowedValues": ["Not started", "In progress"]
+                    }
+                },
+                {
+                    "type": "date",
+                    "options": {
+                        "DateField": "Due",
+                        "Type": "BEFORE"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "OVERDUE",
+            "filters": [
+                {
+                    "type": "absolute",
+                    "options": {
+                        "field": "Status",
+                        "allowedValues": ["Not started", "In progress"]
+                    }
+                },
+                {
+                    "type": "date",
+                    "options": {
+                        "DateField": "Due",
+                        "Type": "AFTER"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "NONE",
+            "filters": [
+                {
+                    "type": "absolute",
+                    "options": {
+                        "field": "Status",
+                        "allowedValues": ["Not started", "In progress"]
+                    }
+                },
+                {
+                    "type": "absolute",
+                    "options": {
+                        "field": "Due-start",
+                        "allowedValues": [""]
+                    }
+                }
+            ]
         }
-    ]
+    ],
+    "messageTemplate": "${index}. [${Name}](${page_url})"
 }

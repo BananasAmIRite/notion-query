@@ -4,6 +4,7 @@ import { queryPage, getPageTitle } from './Page';
 export type StringifiedProperties = { [key: string]: string | string[] };
 
 export function propToString(prop: string | string[]) {
+    if (prop === null || prop === undefined) return '';
     return typeof prop === 'string' ? prop : prop.join(', ');
 }
 

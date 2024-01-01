@@ -14,7 +14,9 @@
     "license": "ISC",
     "dependencies": {
         "@notionhq/client": "^2.2.13",
+        "discord.js": "^14.14.1",
         "dotenv": "^16.3.1",
+        "glob": "^10.3.10",
         "node-cache": "^5.1.2",
         "ts-node": "^10.9.1",
         "typescript": "^5.2.2"

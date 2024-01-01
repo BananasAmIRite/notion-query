@@ -1,4 +1,7 @@
 import { StringifiedProperties } from '../notion/ConvertProperties';
+export interface FilterOptions {
+    invert: boolean;
+}
 
 export type FilterFunction = (data: StringifiedProperties) => boolean;
 

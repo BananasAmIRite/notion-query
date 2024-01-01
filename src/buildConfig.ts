@@ -2,7 +2,11 @@ import { FilterCreator, FilterFunction } from './filters/useFilter';
 import { NotionOptions } from './notion/Notion';
 import { readFileSync } from 'fs';
 
-export type QueryConfig = { dbQueryParams: NotionOptions[]; filters: FilterFunction[] };
+export type QueryConfig = {
+    dbQueryParams: NotionOptions[];
+    presets: { name: string; filters: FilterFunction[] }[];
+    messageTemplate: string;
+};
 
 export default function buildConfig(file: string, filterMap: { [key: string]: FilterCreator }): QueryConfig {
     const json = JSON.parse(readFileSync(file, 'utf-8'));
@@ -22,7 +26,10 @@ export default function buildConfig(file: string, filterMap: { [key: string]: Fi
         };
     });
 
-    const filters = json.filters.map((e: any) => filterMap[e.type](e.options));
+    const presets = json.presets.map((e: any) => ({
+        ...e,
+        filters: e.filters.map((i) => filterMap[i.type](i.options)),
+    }));
 
-    return { dbQueryParams: notionOptions, filters };
+    return { dbQueryParams: notionOptions, presets, messageTemplate: json.messageTemplate };
 }

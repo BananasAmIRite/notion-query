@@ -98,15 +98,10 @@ export default async function getNotionTasks(
     return tasks;
 }
 
-export async function formatReminderMessage(
-    val: { recipients: string[]; result: PageObjectResponse },
-    message: string
-): Promise<string> {
-    const convertedProperties = await convertProperties(val.result);
-
+export function formatReminderMessage(props: { [key: string]: string | Array<string> }, message: string): string {
     let newMsg = message;
     return newMsg.replace(/\${(?<MATCH>.[^${}]*)}/g, (substr, key) => {
-        const val = convertedProperties[key];
-        return (typeof val === 'string' ? val : val.join(', ')) ?? '[No value found]';
+        const val = props[key];
+        return (typeof val === 'string' ? val : val?.join(', ')) ?? '[No value found]';
     });
 }

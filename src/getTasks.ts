@@ -1,10 +1,15 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { QueryConfig } from './buildConfig';
 import getNotionTasks from './notion/Notion';
-import useFilter from './filters/useFilter';
+import useFilter, { FilterFunction } from './filters/useFilter';
 import { StringifiedProperties } from './notion/ConvertProperties';
 
-export const getTasksForUser = async (config: QueryConfig, email: string) => {
+export const getTasksForUser = async (
+    config: QueryConfig,
+    email: string,
+    filterPreset: string,
+    ...addedFilters: FilterFunction[]
+) => {
     const data: {
         result: PageObjectResponse;
         converted: StringifiedProperties;
@@ -18,6 +23,7 @@ export const getTasksForUser = async (config: QueryConfig, email: string) => {
 
     return useFilter(
         data.map((e) => e.converted),
-        ...config.filters
+        ...(config.presets.find((e) => e.name === filterPreset)?.filters ?? []),
+        ...addedFilters
     );
 };
